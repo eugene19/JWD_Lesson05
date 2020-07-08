@@ -9,11 +9,11 @@ import java.util.List;
 public class Runner {
 
     public static void main(String[] args) {
-        String product = "TabletPC";
-        String attribute = "COLOR";
-        String value = "red";
+        String productType = "TabletPC";
+        String attribute = "";
+        String value = "";
 
-        Criteria criteria = new Criteria(product, attribute, value);
+        Criteria criteria = new Criteria(productType, attribute, value);
         FindService findService = new FindService();
 
         List<Device> devices = findService.find(criteria);

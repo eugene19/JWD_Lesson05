@@ -4,6 +4,7 @@ import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
 import by.epamtc.degtyarovea.entity.VacuumCleaner;
 import by.epamtc.degtyarovea.parsers.DeviceParser;
+import by.epamtc.degtyarovea.service.FindService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,7 +27,7 @@ public class VacuumCleanerDAO implements by.epamtc.degtyarovea.dao.DeviceDAO {
     private List<Device> findMatch(String regex) {
         List<Device> devices = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(DEVICES_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FindService.DEVICES_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.matches(regex)) {

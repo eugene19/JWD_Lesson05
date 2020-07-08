@@ -1,22 +1,22 @@
 package by.epamtc.degtyarovea.entity;
 
 public class Criteria {
-    private String product;
+    private String productType;
     private String attribute;
     private String value;
 
-    public Criteria(String product, String attribute, String value) {
-        this.product = product;
+    public Criteria(String productType, String attribute, String value) {
+        this.productType = productType;
         this.attribute = attribute;
         this.value = value;
     }
 
-    public String getProduct() {
-        return product;
+    public String getProductType() {
+        return productType;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
     public String getAttribute() {
