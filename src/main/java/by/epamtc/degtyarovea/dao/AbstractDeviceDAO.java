@@ -12,11 +12,15 @@ import java.util.List;
 
 public abstract class AbstractDeviceDAO {
 
+    /**
+     * @param criteria - criteria of search.
+     * @return List of devices match searching criteria.
+     */
     public List<Device> find(Criteria criteria) {
         List<Device> devices = new ArrayList<>();
         String deviceLineRegex = generateDeviceLineRegex(criteria);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(FindService.DEVICES_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FindService.DEVICES_FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.matches(deviceLineRegex)) {
@@ -31,6 +35,10 @@ public abstract class AbstractDeviceDAO {
         return devices;
     }
 
+    /**
+     * @param criteria - criteria of search.
+     * @return regex string for searching device.
+     */
     private String generateDeviceLineRegex(Criteria criteria) {
         String productType = criteria.getProductType();
         String attribute = criteria.getAttribute();
@@ -39,5 +47,9 @@ public abstract class AbstractDeviceDAO {
         return productType + ".+" + attribute + "=" + value + ".*";
     }
 
+    /**
+     * @param line - string with device.
+     * @return Device object.
+     */
     public abstract Device createDeviceFromString(String line);
 }

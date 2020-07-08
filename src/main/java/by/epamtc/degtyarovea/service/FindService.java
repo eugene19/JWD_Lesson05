@@ -11,9 +11,13 @@ import java.util.List;
 
 public class FindService {
 
-    public static final String DEVICES_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "appliances_db.txt";
+    public static final String DEVICES_FILE_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "appliances_db.txt";
     private CriteriaValidator criteriaValidator = new CriteriaValidator();
 
+    /**
+     * @param criteria - criteria of search.
+     * @return List of devices match searching criteria.
+     */
     public List<Device> find(Criteria criteria) {
         String productType = criteria.getProductType();
         AbstractDeviceDAO dao = null;
