@@ -18,8 +18,7 @@ public class Runner {
 
         List<Device> devices = findService.find(criteria);
 
-        for (Device device : devices) {
-            System.out.println(device);
-        }
+        DevicePrinter printer = new DevicePrinter();
+        printer.printToConsole(devices);
     }
 }
