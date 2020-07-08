@@ -16,7 +16,7 @@ public class FindService {
 
     public List<Device> find(Criteria criteria) {
         String productType = criteria.getProductType();
-        DeviceDAO dao = null;
+        AbstractDeviceDAO dao = null;
 
         if (criteriaValidator.isValid(criteria)) {
             switch (productType) {

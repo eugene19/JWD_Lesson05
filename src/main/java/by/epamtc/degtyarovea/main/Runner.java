@@ -9,9 +9,9 @@ import java.util.List;
 public class Runner {
 
     public static void main(String[] args) {
-        String productType = "TabletPC";
-        String attribute = "";
-        String value = "";
+        String productType = "Oven";
+        String attribute = "CAPACITY";
+        String value = "33";
 
         Criteria criteria = new Criteria(productType, attribute, value);
         FindService findService = new FindService();
