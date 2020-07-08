@@ -2,7 +2,6 @@ package by.epamtc.degtyarovea.dao;
 
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
-import by.epamtc.degtyarovea.entity.Speakers;
 import by.epamtc.degtyarovea.entity.TabletPC;
 import by.epamtc.degtyarovea.parsers.DeviceParser;
 
