@@ -1,6 +1,6 @@
 package by.epamtc.degtyarovea.service;
 
-import by.epamtc.degtyarovea.dao.*;
+import by.epamtc.degtyarovea.dao.AbstractDeviceDAO;
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
 import by.epamtc.degtyarovea.validator.CriteriaValidator;
@@ -19,30 +19,11 @@ public class FindService {
      * @return List of devices match searching criteria.
      */
     public List<Device> find(Criteria criteria) {
-        String productType = criteria.getProductType();
+        String productType = criteria.getDeviceType();
         AbstractDeviceDAO dao = null;
 
         if (criteriaValidator.isValid(criteria)) {
-            switch (productType) {
-                case "Oven":
-                    dao = new OvenDAO();
-                    break;
-                case "Laptop":
-                    dao = new LaptopDAO();
-                    break;
-                case "Refrigerator":
-                    dao = new RefrigeratorDAO();
-                    break;
-                case "VacuumCleaner":
-                    dao = new VacuumCleanerDAO();
-                    break;
-                case "TabletPC":
-                    dao = new TabletPCDAO();
-                    break;
-                case "Speakers":
-                    dao = new SpeakersDAO();
-                    break;
-            }
+            dao = AbstractDeviceDAO.getDeviceDAO(productType);
         }
 
         return (dao != null) ? dao.find(criteria) : new ArrayList<>();

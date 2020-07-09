@@ -13,6 +13,31 @@ import java.util.List;
 public abstract class AbstractDeviceDAO {
 
     /**
+     * Factory method to create DAO by device type.
+     *
+     * @param deviceType - type of device.
+     * @return concrete device DAO.
+     */
+    public static AbstractDeviceDAO getDeviceDAO(String deviceType) {
+        switch (deviceType) {
+            case "Oven":
+                return new OvenDAO();
+            case "Laptop":
+                return new LaptopDAO();
+            case "Refrigerator":
+                return new RefrigeratorDAO();
+            case "VacuumCleaner":
+                return new VacuumCleanerDAO();
+            case "TabletPC":
+                return new TabletPCDAO();
+            case "Speakers":
+                return new SpeakersDAO();
+            default:
+                throw new IllegalArgumentException("No such product type.");
+        }
+    }
+
+    /**
      * @param criteria - criteria of search.
      * @return List of devices match searching criteria.
      */
@@ -40,7 +65,7 @@ public abstract class AbstractDeviceDAO {
      * @return regex string for searching device.
      */
     private String generateDeviceLineRegex(Criteria criteria) {
-        String productType = criteria.getProductType();
+        String productType = criteria.getDeviceType();
         String attribute = criteria.getAttribute();
         String value = criteria.getValue().replace(".", "\\.");
 

@@ -6,7 +6,7 @@ public class CriteriaValidator {
 
     public boolean isValid(Criteria criteria) {
         return criteria != null &&
-                !criteria.getProductType().isEmpty() &&
+                !criteria.getDeviceType().isEmpty() &&
                 !criteria.getAttribute().isEmpty() &&
                 !criteria.getValue().isEmpty();
     }

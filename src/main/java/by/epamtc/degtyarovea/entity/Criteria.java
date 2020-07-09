@@ -3,22 +3,22 @@ package by.epamtc.degtyarovea.entity;
 import java.util.Objects;
 
 public class Criteria {
-    private String productType;
+    private String deviceType;
     private String attribute;
     private String value;
 
-    public Criteria(String productType, String attribute, String value) {
-        this.productType = productType;
+    public Criteria(String deviceType, String attribute, String value) {
+        this.deviceType = deviceType;
         this.attribute = attribute;
         this.value = value;
     }
 
-    public String getProductType() {
-        return productType;
+    public String getDeviceType() {
+        return deviceType;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
     }
 
     public String getAttribute() {
@@ -42,20 +42,20 @@ public class Criteria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Criteria criteria = (Criteria) o;
-        return Objects.equals(productType, criteria.productType) &&
+        return Objects.equals(deviceType, criteria.deviceType) &&
                 Objects.equals(attribute, criteria.attribute) &&
                 Objects.equals(value, criteria.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productType, attribute, value);
+        return Objects.hash(deviceType, attribute, value);
     }
 
     @Override
     public String toString() {
         return "Criteria{" +
-                "productType='" + productType + '\'' +
+                "productType='" + deviceType + '\'' +
                 ", attribute='" + attribute + '\'' +
                 ", value='" + value + '\'' +
                 '}';
