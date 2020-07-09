@@ -2,6 +2,7 @@ package by.epamtc.degtyarovea.dao;
 
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
+import by.epamtc.degtyarovea.exception.NoSuchDeviceTypeException;
 import by.epamtc.degtyarovea.service.FindService;
 
 import java.io.BufferedReader;
@@ -17,8 +18,9 @@ public abstract class AbstractDeviceDAO {
      *
      * @param deviceType - type of device.
      * @return concrete device DAO.
+     * @throws NoSuchDeviceTypeException when there isn't such device type.
      */
-    public static AbstractDeviceDAO getDeviceDAO(String deviceType) {
+    public static AbstractDeviceDAO getDeviceDAO(String deviceType) throws NoSuchDeviceTypeException {
         switch (deviceType) {
             case "Oven":
                 return new OvenDAO();
@@ -33,7 +35,7 @@ public abstract class AbstractDeviceDAO {
             case "Speakers":
                 return new SpeakersDAO();
             default:
-                throw new IllegalArgumentException("No such product type.");
+                throw new NoSuchDeviceTypeException("No such device type: " + deviceType);
         }
     }
 

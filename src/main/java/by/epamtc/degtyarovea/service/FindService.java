@@ -3,6 +3,7 @@ package by.epamtc.degtyarovea.service;
 import by.epamtc.degtyarovea.dao.AbstractDeviceDAO;
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
+import by.epamtc.degtyarovea.exception.NoSuchDeviceTypeException;
 import by.epamtc.degtyarovea.validator.CriteriaValidator;
 
 import java.io.File;
@@ -17,8 +18,9 @@ public class FindService {
     /**
      * @param criteria - criteria of search.
      * @return List of devices match searching criteria.
+     * @throws NoSuchDeviceTypeException when there isn't such device type.
      */
-    public List<Device> find(Criteria criteria) {
+    public List<Device> find(Criteria criteria) throws NoSuchDeviceTypeException {
         String productType = criteria.getDeviceType();
         AbstractDeviceDAO dao = null;
 
