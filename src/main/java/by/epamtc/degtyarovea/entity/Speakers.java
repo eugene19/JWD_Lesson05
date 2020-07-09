@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class Speakers implements Device {
     private int powerConsumption;
     private int numberOfSpeakers;
@@ -46,6 +48,22 @@ public class Speakers implements Device {
 
     public void setCardLength(int cardLength) {
         this.cardLength = cardLength;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Speakers speakers = (Speakers) o;
+        return powerConsumption == speakers.powerConsumption &&
+                numberOfSpeakers == speakers.numberOfSpeakers &&
+                cardLength == speakers.cardLength &&
+                Objects.equals(frequencyRange, speakers.frequencyRange);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(powerConsumption, numberOfSpeakers, frequencyRange, cardLength);
     }
 
     @Override

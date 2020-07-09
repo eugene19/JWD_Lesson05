@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class Laptop implements Device {
     private double batteryCapacity;
     private String OS;
@@ -66,6 +68,24 @@ public class Laptop implements Device {
 
     public void setDisplayInches(double displayInches) {
         this.displayInches = displayInches;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Laptop laptop = (Laptop) o;
+        return Double.compare(laptop.batteryCapacity, batteryCapacity) == 0 &&
+                memoryROM == laptop.memoryROM &&
+                systemMemory == laptop.systemMemory &&
+                Double.compare(laptop.CPU, CPU) == 0 &&
+                Double.compare(laptop.displayInches, displayInches) == 0 &&
+                Objects.equals(OS, laptop.OS);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(batteryCapacity, OS, memoryROM, systemMemory, CPU, displayInches);
     }
 
     @Override

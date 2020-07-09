@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class Refrigerator implements Device {
     private int powerConsumption;
     private double weight;
@@ -66,6 +68,24 @@ public class Refrigerator implements Device {
 
     public void setWidth(double width) {
         this.width = width;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Refrigerator that = (Refrigerator) o;
+        return powerConsumption == that.powerConsumption &&
+                Double.compare(that.weight, weight) == 0 &&
+                freezerCapacity == that.freezerCapacity &&
+                Double.compare(that.overallCapacity, overallCapacity) == 0 &&
+                Double.compare(that.height, height) == 0 &&
+                Double.compare(that.width, width) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(powerConsumption, weight, freezerCapacity, overallCapacity, height, width);
     }
 
     @Override

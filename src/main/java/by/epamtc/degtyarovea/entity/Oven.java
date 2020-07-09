@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class Oven implements Device {
     private int powerConsumption;
     private double weight;
@@ -66,6 +68,24 @@ public class Oven implements Device {
 
     public void setWidth(double width) {
         this.width = width;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Oven oven = (Oven) o;
+        return powerConsumption == oven.powerConsumption &&
+                Double.compare(oven.weight, weight) == 0 &&
+                capacity == oven.capacity &&
+                depth == oven.depth &&
+                Double.compare(oven.height, height) == 0 &&
+                Double.compare(oven.width, width) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(powerConsumption, weight, capacity, depth, height, width);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class TabletPC implements Device {
     private double batteryCapacity;
     private double displayInches;
@@ -56,6 +58,23 @@ public class TabletPC implements Device {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TabletPC tabletPC = (TabletPC) o;
+        return Double.compare(tabletPC.batteryCapacity, batteryCapacity) == 0 &&
+                Double.compare(tabletPC.displayInches, displayInches) == 0 &&
+                memoryROM == tabletPC.memoryROM &&
+                flashMemoryCapacity == tabletPC.flashMemoryCapacity &&
+                Objects.equals(color, tabletPC.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(batteryCapacity, displayInches, memoryROM, flashMemoryCapacity, color);
     }
 
     @Override

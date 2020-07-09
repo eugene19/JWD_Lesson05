@@ -1,5 +1,7 @@
 package by.epamtc.degtyarovea.entity;
 
+import java.util.Objects;
+
 public class VacuumCleaner implements Device {
     private int powerConsumption;
     private String filterType;
@@ -66,6 +68,24 @@ public class VacuumCleaner implements Device {
 
     public void setCleaningWidth(int cleaningWidth) {
         this.cleaningWidth = cleaningWidth;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VacuumCleaner that = (VacuumCleaner) o;
+        return powerConsumption == that.powerConsumption &&
+                motorSpeed == that.motorSpeed &&
+                cleaningWidth == that.cleaningWidth &&
+                Objects.equals(filterType, that.filterType) &&
+                Objects.equals(bagType, that.bagType) &&
+                Objects.equals(wandType, that.wandType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(powerConsumption, filterType, bagType, wandType, motorSpeed, cleaningWidth);
     }
 
     @Override
