@@ -2,12 +2,11 @@ package by.epamtc.degtyarovea.dao;
 
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
-import by.epamtc.degtyarovea.exception.NoSuchDeviceTypeException;
+import by.epamtc.degtyarovea.service.DeviceFileReader;
 import by.epamtc.degtyarovea.service.FindService;
+import by.epamtc.degtyarovea.service.NoSuchDeviceTypeException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,18 +44,13 @@ public abstract class AbstractDeviceDAO {
      */
     public List<Device> find(Criteria criteria) {
         List<Device> devices = new ArrayList<>();
-        String deviceLineRegex = generateDeviceLineRegex(criteria);
+        DeviceFileReader reader = new DeviceFileReader(new File(FindService.DEVICES_FILE_PATH));
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(FindService.DEVICES_FILE_PATH))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.matches(deviceLineRegex)) {
-                    Device device = createDeviceFromString(line);
-                    devices.add(device);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        String deviceLineRegex = generateDeviceLineRegex(criteria);
+        List<String> deviceLines = reader.readMatchesLine(deviceLineRegex);
+
+        for (String deviceLine : deviceLines) {
+            devices.add(createDeviceFromString(deviceLine));
         }
 
         return devices;

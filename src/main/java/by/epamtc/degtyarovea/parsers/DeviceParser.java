@@ -82,8 +82,8 @@ public class DeviceParser {
 
         vacuumCleaner.setPowerConsumption(Integer.parseInt(attributes.get(0)));
         vacuumCleaner.setFilterType(attributes.get(1));
-        vacuumCleaner.setFilterType(attributes.get(2));
-        vacuumCleaner.setFilterType(attributes.get(3));
+        vacuumCleaner.setBagType(attributes.get(2));
+        vacuumCleaner.setWandType(attributes.get(3));
         vacuumCleaner.setMotorSpeed(Integer.parseInt(attributes.get(4)));
         vacuumCleaner.setCleaningWidth(Integer.parseInt(attributes.get(5)));
 
@@ -92,7 +92,7 @@ public class DeviceParser {
 
     private static List<String> getAttributes(String device) {
         List<String> attributes = new ArrayList<>();
-        String keyValueRegex = "[A-Z]+=[\\w.]+";
+        String keyValueRegex = "[A-Z_]+=[-\\w.]+";
         Matcher matcher = Pattern.compile(keyValueRegex).matcher(device);
 
         while (matcher.find()) {

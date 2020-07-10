@@ -3,7 +3,6 @@ package by.epamtc.degtyarovea.service;
 import by.epamtc.degtyarovea.dao.AbstractDeviceDAO;
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
-import by.epamtc.degtyarovea.exception.NoSuchDeviceTypeException;
 import by.epamtc.degtyarovea.validator.CriteriaValidator;
 
 import java.io.File;

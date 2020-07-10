@@ -2,8 +2,8 @@ package by.epamtc.degtyarovea.main;
 
 import by.epamtc.degtyarovea.entity.Criteria;
 import by.epamtc.degtyarovea.entity.Device;
-import by.epamtc.degtyarovea.exception.NoSuchDeviceTypeException;
 import by.epamtc.degtyarovea.service.FindService;
+import by.epamtc.degtyarovea.service.NoSuchDeviceTypeException;
 
 import java.util.List;
 

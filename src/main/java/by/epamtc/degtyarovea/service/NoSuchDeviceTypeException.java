@@ -1,4 +1,4 @@
-package by.epamtc.degtyarovea.exception;
+package by.epamtc.degtyarovea.service;
 
 public class NoSuchDeviceTypeException extends Exception {
 
