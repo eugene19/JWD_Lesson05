@@ -15,7 +15,7 @@ public class DeviceFileReader {
         this.file = file;
     }
 
-    public List<String> readMatchesLine(String regex) {
+    public List<String> readMatchesLine(String regex) throws IOException {
         List<String> devices = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -25,8 +25,6 @@ public class DeviceFileReader {
                     devices.add(line);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return devices;

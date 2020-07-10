@@ -7,6 +7,7 @@ import by.epamtc.degtyarovea.service.FindService;
 import by.epamtc.degtyarovea.service.NoSuchDeviceTypeException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public abstract class AbstractDeviceDAO {
      * @param criteria - criteria of search.
      * @return List of devices match searching criteria.
      */
-    public List<Device> find(Criteria criteria) {
+    public List<Device> find(Criteria criteria) throws IOException {
         List<Device> devices = new ArrayList<>();
         DeviceFileReader reader = new DeviceFileReader(new File(FindService.DEVICES_FILE_PATH));
 

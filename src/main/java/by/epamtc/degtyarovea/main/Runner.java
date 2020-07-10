@@ -5,6 +5,7 @@ import by.epamtc.degtyarovea.entity.Device;
 import by.epamtc.degtyarovea.service.FindService;
 import by.epamtc.degtyarovea.service.NoSuchDeviceTypeException;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Runner {
@@ -23,6 +24,8 @@ public class Runner {
             printer.printToConsole(devices);
         } catch (NoSuchDeviceTypeException e) {
             System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error with reading of file.");
         }
     }
 }
