@@ -25,7 +25,7 @@ public class Runner {
         } catch (NoSuchDeviceTypeException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error with reading of file.");
+            System.out.println("Error of reading file.");
         }
     }
 }
